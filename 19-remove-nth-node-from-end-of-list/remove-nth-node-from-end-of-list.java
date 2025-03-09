@@ -22,14 +22,16 @@ class Solution {
         }
         temp = head;
         int idx = count - n;
-        if(n==count) return head.next;
+        if(n==count) return head.next;// if no of elements and nth node to be from last is also same 
+        //that means full empty node..in that case according to the test cases return head.next matlab
+        //if [1,2,3,4] and n =4 then return [2,3,4] 
         for(int i=0;i<idx;i++){
             prev = temp;
             temp = temp.next;
         }
-        if(prev!= null){
-            prev.next = temp.next;
-        }
+        
+        prev.next = temp.next;
+        
         
         return head;
     }
