@@ -11,5 +11,20 @@ class Solution {
             }
         }
         return -1;
+        // Arrays.sort(nums);
+        // int n = nums.length;
+        // for(int i=1;i<n;i++){
+        //     int count =1;
+        //     if(nums[i] == nums[i-1]){
+        //         count++;
+        //     }
+        //     // else{
+        //     //     count =1;
+        //     // }
+        //     if(count > n/2){
+        //         return nums[i-1];
+        //     }
+        // }
+        // return nums[0];
     }
 }
