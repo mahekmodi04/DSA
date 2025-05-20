@@ -11,10 +11,9 @@ class Solution {
         // return isduplicate;
         HashSet<Integer> set = new HashSet<>();
         for(int i=0;i<n;i++){
-            set.add(nums[i]);
-        }
-        if(set.size() != n){
-            return true;
+            if(!set.add(nums[i])){
+                return true;
+            }
         }
         return false;
     }
