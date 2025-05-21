@@ -30,7 +30,7 @@ class Solution {
         int i = 0;
         int j = 0;
         while(j<n){
-            if(arr[j] != 0){
+            if( arr[j] != 0){
                 int temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
