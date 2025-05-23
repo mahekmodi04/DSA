@@ -11,7 +11,7 @@ class Solution {
        }
        if(index == -1){//edge case for last element
          reverse(nums,0,n-1);
-         return;
+         //return;
        }
        else{
             for(int i=n-1;i>=index;i--){// find smallest greater element nums[i+1] and swap it
