@@ -8,15 +8,15 @@ class Solution {
         for(int j=i;j<n;j++){
             freq[s.charAt(j) - 'a']++;
         
-        int max = Integer.MIN_VALUE;
-        int min = Integer.MAX_VALUE;
-        for(int K=0;K<26;K++){
-            if(max < freq[K]){max = freq[K];}
-            if(freq[K] < min && freq[K] != 0){min = freq[K];}
+            int max = Integer.MIN_VALUE;
+            int min = Integer.MAX_VALUE;
+            for(int K=0;K<26;K++){
+                if(max < freq[K]){max = freq[K];}
+                if(freq[K] < min && freq[K] != 0){min = freq[K];}
+            }
+            int diff = max - min;
+            sumdiff += diff;
         }
-        int diff = max - min;
-        sumdiff += diff;;
-      }
       }
       return sumdiff;
     }
