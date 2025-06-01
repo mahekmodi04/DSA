@@ -12,27 +12,30 @@ class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if(head == null || head.next == null){
             return null;
+            
         }
-        ListNode prev = null;
         ListNode temp = head;
-        int count = 0;
+        int cnt = 0;
         while(temp != null){
+            cnt++;
             temp = temp.next;
-            count++;
+        }
+        int sz = cnt;
+        if(n==sz){
+            head = head.next;
+            return head;
         }
         temp = head;
-        int idx = count - n;
-        if(n==count) return head.next;// if no of elements and nth node to be from last is also same 
-        //that means full empty node..in that case according to the test cases return head.next matlab
-        //if [1,2,3,4] and n =4 then return [2,3,4] 
-        for(int i=0;i<idx;i++){
-            prev = temp;
+        int i=0;
+        while(i < sz-n-1){
             temp = temp.next;
+            i++;
         }
-        
-        prev.next = temp.next;
-        
-        
+         if(temp.next.next == null){
+            temp.next = null;
+            return head;
+        }
+        temp.next = temp.next.next;
         return head;
     }
 }
