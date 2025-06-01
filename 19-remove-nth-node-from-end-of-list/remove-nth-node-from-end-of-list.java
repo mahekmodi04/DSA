@@ -31,10 +31,10 @@ class Solution {
             temp = temp.next;
             i++;
         }
-         if(temp.next.next == null){
-            temp.next = null;
-            return head;
-        }
+        //  if(temp.next.next == null){
+        //     temp.next = null;
+        //     return head;
+        // }
         temp.next = temp.next.next;
         return head;
     }
