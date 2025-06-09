@@ -1,5 +1,6 @@
 class Solution {
     public int countPrimes(int n) {
+        //sieve of eratosthanes
         if(n <= 2){
             return 0;
         }
@@ -8,6 +9,7 @@ class Solution {
         for(int i=2;i<n;i++){
             primes[i] = 1;
         }
+        //algo is here to mark all the multiples of prime number as 0 because they cant be prime
         for(int i=2;i*i < n;i++){
             if(primes[i] == 1){
                 
