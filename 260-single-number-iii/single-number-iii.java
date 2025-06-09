@@ -5,7 +5,7 @@ class Solution {
         for(int i=0;i<nums.length;i++){
             XOR ^= nums[i];
         }
-        long rightmost = ((XOR & (XOR - 1)) ^ XOR);
+        long rightmost = (XOR & (-XOR));
         int b1 = 0;
         int b2 = 0;
         for(int j=0;j<nums.length;j++){
