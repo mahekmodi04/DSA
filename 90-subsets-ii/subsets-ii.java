@@ -12,7 +12,7 @@ class Solution {
                 list.add(nums[j]);
             }
         }
-        Collections.sort(list); 
+        //Collections.sort(list); 
         set.add(list);
        }
        List<List<Integer>> mlist = new ArrayList<>(set);
