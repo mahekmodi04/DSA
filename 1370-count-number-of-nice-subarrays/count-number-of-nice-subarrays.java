@@ -17,7 +17,7 @@ class Solution {
                 l++;
             }
             if(odds == k){
-                even = 0;
+                even = 0;//for tracking the number of even numbers that also can contribute as separate subarrays because odd count still remains the same.
                 int temp = l;
                 while(temp < r && nums[temp] %2 == 0){
                     temp++;
