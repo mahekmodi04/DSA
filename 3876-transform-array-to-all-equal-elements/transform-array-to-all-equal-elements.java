@@ -40,9 +40,6 @@ class Solution {
            isminus = true;
         }
         
-        if(isone == true || isminus == true){
-            return true;
-        }
-        return false;
+        return isone || isminus;
     }
 }
