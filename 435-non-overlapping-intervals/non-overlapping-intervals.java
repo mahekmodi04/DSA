@@ -7,7 +7,7 @@ class Solution {
         int lastend = intervals[0][1];
 
         for(int i=1;i<intervals.length;i++){
-            if(intervals[i][1] > lastend && intervals[i][0] >= lastend){
+            if( intervals[i][0] >= lastend){
                 lastend = intervals[i][1];
                 include = intervals[i][0];
             }
