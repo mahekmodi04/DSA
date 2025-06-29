@@ -15,39 +15,33 @@
  */
 class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        if (root == null) return new ArrayList<>();
-
-        int count = -1;
-        List<List<Integer>> mainlist = new ArrayList<>();
+        int count = 0;
+        List<List<Integer>> mlist = new ArrayList<>();
         Queue<TreeNode> q = new LinkedList<>();
+        if(root == null){
+            return mlist;
+         }
         q.add(root);
         while(!q.isEmpty()){
             List<Integer> list = new ArrayList<>();
             int size = q.size();
             for(int i=0;i<size;i++){
-                TreeNode node = q.poll();
-                list.add(node.val);
-                if(node.left != null){
-                    q.add(node.left);
+                TreeNode curr = q.poll();
+                list.add(curr.val);
+                if(curr.left != null){
+                    q.add(curr.left);
                 }
-                if(node.right != null){
-                    q.add(node.right);
+                if(curr.right != null){
+                    q.add(curr.right);
                 }
             }
             count++;
-            if(count % 2 != 0){//if index is odd then perform the reverse thing
-                int start = 0;
-                int end = list.size()-1;
-                while(start <= end){
-                    int temp = list.get(start);
-                    list.set(start,list.get(end)); // in arraylist we have to set the value with <index ,    value> type and not just list.get(start) = list.get(end)
-                    list.set(end, temp);
-                    start ++;
-                    end--;
-                }
+            if(count % 2 == 0){
+                Collections.reverse(list);
             }
-            mainlist.add(list);//add it to mainlist after reversing
+            mlist.add(list);
         }
-        return mainlist;
+        
+        return mlist;
     }
 }
