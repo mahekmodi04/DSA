@@ -22,7 +22,7 @@ class Solution {
         return res;
     }
     public void inorder(TreeNode root, int k){
-
+//inorder of BST will be asc sorted order..so instead of stroing and takng req k we will track a cnt variable and then whenver we take a var from recursive function we will incr the cnt and check if cnt == k return with that root.val
         if(root == null){
             return ;
         }
