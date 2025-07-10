@@ -1,51 +1,24 @@
 class Solution {
-    public void merge(int[] a, int m, int[] b, int n) {
-        
-        // int i=0;
-        // int j=0;
-        // while(i<a.length && j<n){
-        //     if(a[i] < b[j] && a[i] !=0){
-        //         i++;
-        //     }
-        //     else if(a[i] < b[j] && a[i] == 0){
-        //         a[i] = b[j];
-        //     }
-        //     else if(a[i] == b[j]){
-        //         i++;
-        //         int temp = a[i];
-        //         a[i] = b[j];
-        //     }
-        //     else{
-                
-        //         j++;
-            
-            
-        // }
-        // Arrays.sort(a);
-        // for(i=0;i<a.length;i++){
-        //     System.out.print(a[i]);
-        // }
-
-        if (a.length - m != n) {
-            System.out.print("-1");
-            return; // Stop execution
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = nums1.length - 1;
+        int j = nums2.length - 1;
+        int k = m-1;
+        while(k >= 0 && j>= 0){
+            if(nums1[k] <= nums2[j]){
+                nums1[i] = nums2[j];
+                i--;
+                j--;
+            }
+            else{
+                nums1[i] = nums1[k];
+                i--;
+                k--;
+            }
         }
-
-        int i = m; // Start from the last index of array a
-        int j = 0;            // Start from beginning of array b
-
-        while (j < n) {
-            a[i] = b[j];
-            j++;
-            i++;
+        while(j>= 0){
+            nums1[i] = nums2[j];
+            i--;
+            j--;
         }
-
-        Arrays.sort(a);
-
-        for (i = 0; i < a.length; i++) {
-            System.out.print(a[i] + " ");
-        }
-
-            
     }
 }
