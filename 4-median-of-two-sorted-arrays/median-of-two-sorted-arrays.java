@@ -1,50 +1,37 @@
 class Solution {
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int n = nums1.length;
-        int m = nums2.length;
-        int newarr[] = new int[n+m];
-        int i=0;
-        int j=0;
-        int k=0;
-        while(i<n && j<m){
-            if(nums1[i] < nums2[j]){
-                newarr[k] = nums1[i];
+    public double findMedianSortedArrays(int[] a, int[] b) {
+        int i = 0;
+        int j = 0;
+        int arr[] = new int[a.length + b.length];
+        int k =0;
+        while(i<a.length && j<b.length){
+            if(a[i] < b[j]){
+                arr[k] = a[i];
+                k++;
                 i++;
-                k++;
-            }
-            else if(nums1[i] > nums2[j]){
-                newarr[k] = nums2[j];
-                j++;
-                k++;
             }
             else{
-                newarr[k] = nums1[i];
-                k++;
-                i++;
-                newarr[k] = nums2[j];
+                arr[k] = b[j];
                 k++;
                 j++;
             }
         }
-        while(i<n && k < newarr.length){
-            newarr[k] = nums1[i];
-            k++;
+        while(i<a.length){
+            arr[k] = a[i];
             i++;
-        }
-        while(j<m && k < newarr.length){
-            newarr[k] = nums2[j];
             k++;
+        }
+        while(j<b.length){
+            arr[k] = b[j];
             j++;
+            k++;
         }
-        int size = newarr.length;
-        if(size %2 !=0){
-            int ele = (size+1)/2;
-            return newarr[ele-1];
+        
+        if(arr.length % 2 == 0){
+            int n = arr.length / 2;
+            return (arr[n] + arr[n-1])/2.0;
         }
-        else{
-            int ele = size/2;
-            return (newarr[ele-1] + newarr[ele])/2.0;
-        }
-
+        int n = arr.length / 2;
+        return arr[n];
     }
 }
