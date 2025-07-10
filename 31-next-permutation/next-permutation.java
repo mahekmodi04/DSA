@@ -1,45 +1,43 @@
-import java.util.*;
 class Solution {
     public void nextPermutation(int[] nums) {
-        int index = -1;
-       int n = nums.length;
-       for(int i=n-1;i>0;i--){
-        if(nums[i] > nums[i-1]){
-            index = i-1;
-            break;
-        }
-       }
-       if(index == -1){//edge case for last element
-         reverse(nums,0,n-1);
-         //return;
-       }
-       else{
-            for(int i=n-1;i>=index;i--){// find smallest greater element nums[i+1] and swap it
-            if(nums[i] > nums[index]){
-                int temp = nums[index];
-                nums[index] = nums[i];
-                nums[i] = temp;
+        int bp = 0;
+        int ref = 0;
+        for(int i=nums.length-1 ; i>0;i--){
+            if(nums[i] > nums[i-1]){
+                bp = i;
+                ref = i-1;
                 break;
             }
         }
-
-        // sort the remaining part
-            reverse(nums, index + 1, n - 1);
-
+        if(bp == 0){
+            int first = 0;
+            int last = nums.length-1;
+            while(first <= last){
+            int t = nums[first];
+            nums[first] = nums[last];
+            nums[last] = t;
+            first++;
+            last--;
         }
-       
-    //print
-       for(int i=0;i<n;i++){
-        System.out.print(nums[i]);
-       }  
-    }
-    public void reverse(int[] arr, int start, int end){
-        while(start < end){
-            int temp = arr[start];
-            arr[start] = arr[end];
-            arr[end] = temp;
-            start++;
-            end--;
+        return;
+        }
+        for(int j=nums.length-1;j>=bp;j--){
+            if(nums[j] > nums[ref]){
+                int temp = nums[ref];
+                nums[ref] = nums[j];
+                nums[j] = temp;
+                break;
+            }
+        }
+        //reverse 
+        int first = bp;
+        int last = nums.length-1;
+        while(first <= last){
+            int t = nums[first];
+            nums[first] = nums[last];
+            nums[last] = t;
+            first++;
+            last--;
         }
     }
 }
