@@ -1,58 +1,58 @@
 class Solution {
     public boolean isValidSudoku(char[][] board) {
-        
-        boolean validrow = false;
-        boolean validcol = false;
-        boolean validmat = false;
+        boolean isrow = false;
+        boolean iscol = false;
+        boolean ismat = false;
 
-        //for row
-        for(int i=0;i<9;i++){
-            HashSet<Character> row = new HashSet<>();
-            for(int j=0;j<9;j++){
-                if(board[i][j] != '.' && (!row.add(board[i][j]))){
-                    //validrow = false;
+        // for row
+        for(int i=0;i < board.length;i++){
+            HashSet<Character> set = new HashSet<>();
+            for(int j=0;j < board[0].length;j++){
+                if(board[i][j] != '.' && ! set.add(board[i][j])){
                     return false;
                 }
+                // else{
+                //     set.add(board[i][j]);
+                // }
             }
-            validrow = true;
         }
+        isrow = true;
 
         //for col
-        for(int j=0;j<9;j++){
-            HashSet<Character> col = new HashSet<>();
-            for(int i=0;i<9;i++){
-                if(board[i][j] != '.' && (!col.add(board[i][j]))){
-                    //validcol = false;
+        for(int i=0;i<board.length;i++){
+            HashSet<Character> set = new HashSet<>();
+            for(int j=0;j<board[0].length;j++){
+                if(board[j][i] != '.' && !set.add(board[j][i])){
                     return false;
-                }else{
-                    col.add(board[i][j]);
                 }
+                // else{
+                //     set.add(board[j][i]);
+                // }
             }
-            validcol = true;
         }
+        iscol = true;
 
-        //for mat
-        for(int row=0;row<9;row+=3){
-            for(int col=0;col<9;col+=3){
-                HashSet<Character> mat = new HashSet<>();
-                for(int i=0;i<3;i++){
-                    for(int j=0;j<3;j++){
-                        char curr = board[row+i][col+j];
-                        if(curr != '.' && !mat.add(curr)){
-                            return false;
-                        }
+        //for mat 
+        for(int i=0;i<board.length;i+= 3){
+            for(int j=0;j<board[0].length;j +=3){
+                HashSet<Character> set = new HashSet<>();
+                for(int k=i;k<i+3;k++){
+                    for(int t=j;t<j+3;t++){
+                        if(board[k][t] != '.' && !set.add(board[k][t]))return false;
+                        // else{
+                        //     set.add(board[k][t]);
+                        // }
                     }
                 }
             }
-            validmat = true;
         }
-        if(validrow == true && validcol==true){
-            if(validmat == true){
+        ismat = true;
+
+        if(isrow == true && iscol ==true){
+            if(ismat == true){
                 return true;
             }
-            else{
-                return false;
-            }
+            return false;
         }
         return false;
     }
