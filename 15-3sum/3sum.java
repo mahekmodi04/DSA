@@ -1,55 +1,36 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-         
-        // for(int i=0;i<n;i++){
-        //     for(int j=i+1;j<n;j++){
-        //         int sum = nums[i]+nums[j];
-        //         int target = 0 - sum;
-        //         int k = j+1;
-        //         while(k < n){
-        //             if(nums[k] == target){
-        //                 List<Integer> list = new ArrayList<>();
-        //                 list.add(nums[i]);
-        //                 list.add(nums[j]);
-        //                 list.add(nums[k]);
-        //                 Collections.sort(list);
-        //                 mainlist.add(list);
-        //                 break;
-        //             }
-        //             else{
-        //                 k++;
-        //             }
-        //         }
-        //     }
-        // }
-        int n = nums.length;
         Arrays.sort(nums);
-        Set<List<Integer>> mainlist = new HashSet<>();
-        int i=0;
-        while(i<n-1){
-            int j=i+1;
-            int k =n-1;
-            while(k>j){
-                if(nums[i] + nums[j] + nums[k] == 0){
-                    List<Integer> list = new ArrayList<>();
-                        list.add(nums[i]);
-                        list.add(nums[j]);
-                        list.add(nums[k]);
-                        Collections.sort(list);
-                        mainlist.add(list);
-                        j++;
-                        k--;
+        List<List<Integer>> list = new ArrayList<>();
+        int n = nums.length;
+        for(int i=0;i<nums.length-2;i++){
+            if(i>0 && nums[i] == nums[i-1])continue;
+
+            int left = i+1;
+            int right = n-1;
+            while(left < right){
+                if(nums[i] + nums[left] + nums[right] == 0){
+                    ArrayList<Integer> l1 = new ArrayList<>();
+                    l1.add(nums[i]);
+                    l1.add(nums[left]);
+                    l1.add(nums[right]);
+                    
+                    list.add(l1);
+                    
+                    while(left < right && nums[left] == nums[left + 1])left++;
+                    while(left < right && nums[right] == nums[right - 1])right--;
+                    left++;
+                    right--;
                 }
-                else if (nums[i] + nums[j] + nums[k] < 0) {
-                    j++;
+                else if(nums[i]+ nums[left]+ nums[right] < 0){
+                    left++;
                 }
                 else{
-                    k--;
+                    right--;
                 }
-
             }
-            i++;
+            
         }
-         return new ArrayList<>(mainlist);
+        return list;
     }
 }
