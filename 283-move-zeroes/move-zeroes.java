@@ -1,5 +1,6 @@
 class Solution {
     public void moveZeroes(int[] nums) {
+        //brute force - to use temp take all non zeros and then push all zeros back 
         ArrayList<Integer> list = new ArrayList<>();
         for(int i=0;i<nums.length;i++){
             if(nums[i] != 0){
