@@ -1,32 +1,33 @@
 class Solution {
-    public int maxProduct(int[] arr) {
-        int n = arr.length;
+    public int maxProduct(int[] nums) {
+        int n = nums.length;
         int prod = 1;
-        int maxprod = Integer.MIN_VALUE;
-        if(n==1){
-            return arr[0];
-        }
-        for(int i=0;i<n;i++){
-            prod = prod * arr[i];
-            if(maxprod < prod){
-                maxprod = prod;
+        int max = Integer.MIN_VALUE;
+        //prefix
+        for(int i=0;i<nums.length;i++){
+            prod = prod * nums[i];
+
+            if(max < prod){
+                max = prod;
             }
             if(prod == 0){
                 prod = 1;
             }
-            
         }
+        //suffix
         prod = 1;
         for(int i=n-1;i>=0;i--){
-            prod = prod * arr[i];
-            if(maxprod < prod){
-                maxprod = prod;
+            prod = prod * nums[i];
+
+            if(max < prod){
+                max = prod;
             }
             if(prod == 0){
                 prod = 1;
             }
-            
         }
-        return maxprod;
+        return max;
+        
+
     }
 }
