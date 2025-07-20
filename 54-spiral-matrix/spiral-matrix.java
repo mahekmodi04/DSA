@@ -1,45 +1,42 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> list = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>();
         int n = matrix.length;
-        int m= matrix[0].length;
-        int firstrow = 0;
-        int lastrow = n-1;
-        int firstcol = 0;
-        int lastcol = m-1;
-        while(firstrow <= lastrow && firstcol <= lastcol){
-
+        int m = matrix[0].length;
+        int first = 0;
+        int last = n-1;
+        int left = 0;
+        int right = m-1;
+        while(first <= last && left <= right){
             //top
-            int i=firstrow;
-            for(int j=firstcol;j<=lastcol;j++){
+            int i = first;
+            for(int j=left;j<=right;j++){
                 list.add(matrix[i][j]);
             }
             //right
-            int j=lastcol;
-            for(i=firstrow+1;i<=lastrow;i++){
+            int j=right;
+            for(i=first+1 ; i<=last;i++){
                 list.add(matrix[i][j]);
             }
-            //bottom
-            i = lastrow;
-            if(firstrow < lastrow){
-                for(j=lastcol-1;j>=firstcol;j--){
+            //bootom
+            if(first < last){
+                i = last;
+                for(j = right - 1;j >= left ; j--){
                     list.add(matrix[i][j]);
                 }
 
             }
-            
-            //left
-            j=firstcol;
-            if(firstcol < lastcol){
-                for(i=lastrow-1;i>firstrow;i--){
+
+            if(left < right){
+                j = left;
+                for(i = last - 1;i > first;i--){
                     list.add(matrix[i][j]);
                 }
             }
-            
-            firstrow++;
-            lastrow--;
-            firstcol++;
-            lastcol--;
+            first++;
+            last--;
+            left++;
+            right--;
         }
         return list;
     }
