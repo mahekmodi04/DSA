@@ -10,44 +10,36 @@
  */
 class Solution {
     public ListNode rotateRight(ListNode head, int k) {
-        //FIND SIZE
+        if(head == null)return null;
+        if(k == 0){
+            return head;
+        }
+        //length
         ListNode temp = head;
-        int count = 0;
+        int cnt = 0;
         while(temp != null){
-            count++;
             temp = temp.next;
+            cnt++;
         }
-        int size  = count;
-        if(size == 0){
-            return null;
-        }
-        if(size == 1){
-            return head;
-        }
-        if(size == k){
-            return head;
-        }
-        int num = k% size;
-        if(num == 0){
-            return head;
-        }
-        //num is from the end so i have find the num from the first 
         temp = head;
-        int i=0;
-        while(i < size - num-1){
+        int target = k % cnt;
+        if(target == 0){
+            return head;
+        }
+        int i=1;
+        while(i < cnt - target){
+            temp = temp.next;
             i++;
+        }
+        ListNode newhead = temp.next;
+        temp.next = null;
+
+        temp = newhead;
+        while(temp.next != null){
             temp = temp.next;
         }
-        //breakpoint 
-        ListNode temp2 = temp.next;
-        temp.next  = null;
-
-        ListNode temp1 = temp2;
-        while(temp1.next != null){
-            temp1 = temp1.next;
-        }
-        temp1.next = head;
-        head = temp2;
+        temp.next = head;
+        head = newhead;
 
         return head;
     }
