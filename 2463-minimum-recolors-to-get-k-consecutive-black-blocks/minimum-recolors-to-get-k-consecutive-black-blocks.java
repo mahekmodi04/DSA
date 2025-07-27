@@ -18,7 +18,7 @@ class Solution {
             if(blocks.charAt(j) == 'W'){
                 swaps++;
             }
-            min = Math.min(min , swaps);
+            if(min > swaps) min = swaps;
         }
         return min;
     }
