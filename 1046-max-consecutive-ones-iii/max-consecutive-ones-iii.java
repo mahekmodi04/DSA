@@ -28,7 +28,7 @@ class Solution {
                     }
                 }
             }
-            max = Math.max(cnt , max);
+            if(cnt > max)max = cnt;
         }
         return max;
     }
