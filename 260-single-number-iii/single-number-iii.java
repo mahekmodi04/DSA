@@ -1,23 +1,22 @@
 class Solution {
     public int[] singleNumber(int[] nums) {
-        int arr[] = new int[2];
-        long XOR = 0;
+        long xor = 0;
+        int ans[] = new int[2];
         for(int i=0;i<nums.length;i++){
-            XOR ^= nums[i];
+            xor ^= nums[i];
         }
-        long rightmost = (XOR & (-XOR));
-        int b1 = 0;
-        int b2 = 0;
-        for(int j=0;j<nums.length;j++){
-            if((rightmost & nums[j]) != 0){
-                b1 ^= nums[j];
+        long rightmost = (xor & (xor - 1)) ^ xor;
+        int a = 0;
+        int b = 0;
+        for(int i=0;i<nums.length;i++){
+            if((rightmost & nums[i]) != 0){
+                a ^= nums[i];
+            }else{
+                b ^= nums[i];
             }
-            else{
-                b2 ^= nums[j];
-            }  
         }
-        arr[0] = b1;
-        arr[1] = b2;
-        return arr;
+        ans[0] = a;
+        ans[1] = b;
+        return ans;
     }
 }
