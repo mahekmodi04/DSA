@@ -1,17 +1,13 @@
 class Solution {
     public String removeTrailingZeros(String num) {
-        int n = num.length();
-        int i = n-1;
-        int index = 0;
-        while(i>=0){
-            if(num.charAt(i)=='0'){
-                i--;
-            }
-            else{
-               // index = i;
+        int j = num.length()-1;
+        for(int i=num.length()-1;i>=0 ;i--){
+            if(num.charAt(i) != '0'){
+                j=i;
                 break;
             }
+
         }
-        return num.substring(0,i+1);
+        return num.substring(0,j+1);
     }
 }
