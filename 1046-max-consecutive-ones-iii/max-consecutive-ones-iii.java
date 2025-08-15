@@ -25,7 +25,7 @@ class Solution {
             }
             
             else{
-                if(nums[tail] == 0 ){
+                if(nums[tail] == 0 && cnt0 ==k){
                     cnt0--;
                     cnt--;
                 }
