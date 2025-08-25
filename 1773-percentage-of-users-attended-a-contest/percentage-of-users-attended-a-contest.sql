@@ -1,6 +1,6 @@
 # Write your MySQL query statement below
 SELECT r.contest_id, 
-ROUND(count(r.contest_id)*100 / (select count(*) from Users) ,2)
+ROUND((count(r.contest_id) / (select count(*) from Users))*100 ,2)
 AS percentage
 FROM Register as r
 LEFT JOIN Users as u
