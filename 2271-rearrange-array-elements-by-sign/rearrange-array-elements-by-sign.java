@@ -3,7 +3,7 @@ class Solution {
         int pos = 0;
         int neg = 1;
         int ans[] = new int[nums.length];
-        for(int i=0;i<nums.length;i++){
+        for(int i=0;i<ans.length;i++){
             if(nums[i] < 0){
                 ans[neg] = nums[i];
                 neg += 2;
@@ -13,6 +13,6 @@ class Solution {
                 pos += 2;
             }
         }
-        return ans;
+        return ans; 
     }
 }
