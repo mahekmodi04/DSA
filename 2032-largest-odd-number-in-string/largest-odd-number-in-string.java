@@ -4,10 +4,6 @@ class Solution {
             if(num.charAt(i) % 2 != 0){
                 return num.substring(0,i+1);
             }
-            else{
-                continue;
-            }
-            
         }
         return "";
     }
