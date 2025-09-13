@@ -1,16 +1,13 @@
 class Solution {
     public boolean rotateString(String s, String goal) {
         if(s.length() != goal.length())return false;
+        int n = goal.length();
         String str = s + s;
-        int i=0;
-        int j=goal.length();
-        while(j<str.length()){
-            String substr = str.substring(i,j);
-            if(goal.equals(substr)){
-                return true;
+        for(int i=0;i<=str.length()-n;i++){
+            if(str.charAt(i) == goal.charAt(0)){
+                String sub = str.substring(i,i+n);
+                if(sub.equals(goal))return true;
             }
-            i++;
-            j++;
         }
         return false;
     }
