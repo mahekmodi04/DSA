@@ -9,6 +9,7 @@ class Solution {
                 max = Math.max(cnt , max);
             }
             else{
+                
                 cnt = 0;
             }
             
