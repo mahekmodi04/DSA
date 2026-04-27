@@ -2,11 +2,14 @@ class Solution {
     public char findTheDifference(String s, String t) {
         //using XOR 
         char xor = 0;
-        for(int i=0;i<s.length();i++){
-            xor ^= s.charAt(i);
+        char c1[] = s.toCharArray();
+        char c2[] = t.toCharArray();
+
+        for(int i=0;i<c1.length;i++){
+            xor ^= c1[i];
         }
-        for(int j=0;j<t.length();j++){
-            xor ^= t.charAt(j);
+        for(int j=0;j<c2.length;j++){
+            xor ^= c2[j];
         }
         return xor;
     }
