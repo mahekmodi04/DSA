@@ -11,7 +11,7 @@ class Solution {
             rev = rev * 10 + t;
             x = x/10;
         }
-        if(copy == rev)return true;
-        return false;
+        if(copy != rev)return false;
+        return true;
     }
 }
