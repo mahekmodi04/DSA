@@ -12,9 +12,9 @@ class Solution {
                 j--;
             }
             else if(!isVowel(arr[i]))i++;
-            else if(!isVowel(arr[j]))j--;
+            
             else{
-                i++;
+              
                 j--;
             }
         }
