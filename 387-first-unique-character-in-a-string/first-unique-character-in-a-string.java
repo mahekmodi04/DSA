@@ -19,8 +19,8 @@ class Solution {
         int[] freq = new int[26];
 
         // count
-        for (char ch : s.toCharArray()) {
-            freq[ch - 'a']++;
+        for (int i = 0; i < s.length(); i++) {
+            freq[s.charAt(i) - 'a']++;
         }
 
         // find first unique
