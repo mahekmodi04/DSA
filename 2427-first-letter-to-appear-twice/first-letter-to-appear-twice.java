@@ -6,8 +6,10 @@ class Solution {
             if(!set.add(s.charAt(i))){
                 c = s.charAt(i);
                 break;
+            }else{
+                set.add(s.charAt(i));
             }
-            set.add(s.charAt(i));
+            
         }
         return c;
     }
