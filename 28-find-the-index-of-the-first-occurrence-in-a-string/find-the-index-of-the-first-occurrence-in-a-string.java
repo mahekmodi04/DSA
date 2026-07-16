@@ -1,12 +1,22 @@
 class Solution {
-    public int strStr(String s1, String s2) {
-        int j = s2.length();
-       for(int i=0;i<s1.length()-j+1;i++){
-        if(s1.charAt(i) == s2.charAt(0)){
-            String sub = s1.substring(i,i+j);
-            if(sub.equals(s2))return i;
+    public int strStr(String haystack, String needle) {
+        int i=0;
+        int j=0;
+        while(i<haystack.length() && j<needle.length()){
+            if(haystack.charAt(i) == needle.charAt(j)){
+                if(i+needle.length() <= haystack.length()){
+                    String substr = haystack.substring(i,i+needle.length());
+                    if(substr.equals(needle)){
+                        return i;
+                    }
+                }
+                else{
+                    return -1;
+                }
+                
+            }
+            i++;
         }
-       }
-       return -1;
+        return -1;
     }
 }
