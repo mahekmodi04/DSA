@@ -1,43 +1,51 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
-        ArrayList<Integer> list = new ArrayList<>();
-        int n = matrix.length;
-        int m = matrix[0].length;
-        int first = 0;
-        int last = n-1;
-        int left = 0;
-        int right = m-1;
-        while(first <= last && left <= right){
-            //top
-            int i = first;
-            for(int j=left;j<=right;j++){
-                list.add(matrix[i][j]);
-            }
-            //right
-            int j=right;
-            for(i=first+1 ; i<=last;i++){
-                list.add(matrix[i][j]);
-            }
-            //bootom
-            if(first < last){
-                i = last;
-                for(j = right - 1;j >= left ; j--){
-                    list.add(matrix[i][j]);
+        int m = matrix.length;
+        int n = matrix[0].length;
+        List<Integer> ans = new ArrayList<>();
+
+        int firstrow = 0;
+        int firstcol = 0;
+        int lastrow = m-1;
+        int lastcol = n-1;
+
+        while(firstcol <= lastcol && firstrow <= lastrow){
+
+            
+            
+                //top
+                int i = firstrow;
+                for(int j=firstcol; j<=lastcol ; j++){
+                    ans.add(matrix[i][j]);
+                }
+                //right
+                int j = lastcol;
+                for(i=firstrow + 1; i<=lastrow; i++){
+                    ans.add(matrix[i][j]);
                 }
 
-            }
-
-            if(left < right){
-                j = left;
-                for(i = last - 1;i > first;i--){
-                    list.add(matrix[i][j]);
+            
+            
+            if(firstrow < lastrow){
+                //bottom
+                i = lastrow;
+                for(j = lastcol-1 ; j>=firstcol; j--){
+                    ans.add(matrix[i][j]);
                 }
             }
-            first++;
-            last--;
-            left++;
-            right--;
+            if(firstcol < lastcol){
+                //left
+                j = firstcol;
+                for(i = lastrow - 1; i>firstrow ; i--){
+                    ans.add(matrix[i][j]);
+                }
+            }
+            
+            firstcol++;
+            firstrow++;
+            lastcol--;
+            lastrow--;
         }
-        return list;
+        return ans;
     }
 }
