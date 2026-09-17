@@ -1,17 +1,14 @@
 class Solution {
     public boolean isPalindrome(int x) {
-        int copy = x;
-        //reversing the number
+        if(x < 0)return false;
+        int og = x;
         int rev = 0;
-        if(x < 0){
-            return false;
-        }
-        while(x > 0){
+        while(x != 0){
             int t = x % 10;
             rev = rev * 10 + t;
             x = x/10;
         }
-        if(copy != rev)return false;
-        return true;
+        if(rev == og)return true;
+        return false;
     }
 }
