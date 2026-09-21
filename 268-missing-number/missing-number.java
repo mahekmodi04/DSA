@@ -5,9 +5,9 @@ class Solution {
         Arrays.sort(arr);
          int k = 0;
         for(int i=0;i<arr.length;i++){
-            if(k != arr[i])return k;
+            if(k == arr[i])k++;
             else{
-                k++;
+                return k;
             }
             
         }
